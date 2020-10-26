@@ -1,0 +1,20 @@
+<!doctype html>
+{% extends "firstapp/base.html"%}
+
+{%block body_block%} 
+
+     <form method="POST" enctype="multipart/form-data">
+       {%if registered%}
+          <h1>Thanks for registering</h1>
+          <h1><a href="{% url 'firstapp:user_login'%}">Login</a></h1>
+        {%else%}
+            <h2>Register Here:</h2>
+            <form method="POST" enctype="multipart/form-data">
+                {%csrf_token%}
+                {{user_form.as_p}}
+                {{profile_form.as_p}}
+                <input type="submit" value="Register">
+            </form>
+       {%endif%}
+     </form>
+{%endblock%} 

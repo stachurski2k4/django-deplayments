@@ -1,0 +1,40 @@
+<!doctype html>
+{% load static %}
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>First App</title>
+  <link rel="stylesheet" href="{% static 'css/example.css' %}"/>
+</head>
+
+<body>
+ <h1>This is Admin.html!</h1>
+ {% if access_records%}
+  <table>
+    <thead>
+      <th>Site Name</th>
+      <th>Date accessed</th>
+    </thead>
+    {% for acc in access_records %}
+    <tr>
+      <td>{{acc.page}}</td>
+      <td>{{acc.date}}</td>
+    </tr>
+    {% endfor%}
+  </table>
+  {%else%}
+   <p>No data found</p>
+  {%endif%}
+  {%if users %}
+  <h3>Users</h3>
+      <ul>
+        {%for name in users%}
+        <li>{{name}}</li>
+        {%endfor%}
+      </ul>
+    {%else%}
+    <p>No data found</p>
+  {%endif%}
+  
+</body>
+</html>

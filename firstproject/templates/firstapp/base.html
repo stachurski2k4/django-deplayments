@@ -1,0 +1,28 @@
+<!doctype html>
+{% load static %}
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Welcome user</title>
+  <link rel="stylesheet" href="{% static 'css/example.css' %}"/>
+</head>
+
+<body>
+ <div class="nav">
+   <h3>
+  <a href="{% url 'index'%}">Home</a>
+  <a href="{% url 'admin:index'%}">Go to admin</a>
+  {%if user.is_authenticated%}
+  <a href="{% url 'firstapp:logout'%}">Logout</a>
+  {%else%}
+  <a href="{% url 'firstapp:user_login'%}">Login</a>
+  <a href="{% url 'firstapp:registration'%}">Register</a>
+  {%endif%}
+</h3>
+ </div>
+ <div class="center">
+   {%block body_block%}
+   {%endblock%}
+ </div>
+</body>
+</html>
